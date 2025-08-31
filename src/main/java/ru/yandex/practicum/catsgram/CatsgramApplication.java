@@ -13,6 +13,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // 6) Code on demand - client's functionality can be extended by server's code response
 
 // Resource in REST - data in all shapes and data types
+// to name them mostly nouns are used e.g. /posts, /api/starships
+// /posts/{post-id}/author and etc
+// slash is used like a hierarchy of the resource
+// slash in the end is used if the resource has child URLS, if not - better to not use
+// use "-" instead of "_" and do not put words together
+// do not specify HTTP method in the resource name, API will know it auto
+// HTTP has variuos methods e.g. PUT - changes existind data or writes new, PATCH - small changes in existing
+// PUT, PATCH, DELETE AND POST are not safe methods cuz they can change the resource
+// idempotent methods are the ones that don't change anything if called many times
+
 
 @SpringBootApplication
 public class CatsgramApplication {
