@@ -6,6 +6,7 @@ import ru.yandex.practicum.catsgram.exception.UserAlreadyExistsException;
 import ru.yandex.practicum.catsgram.model.User;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -30,5 +31,15 @@ public class UserController {
         return user;
     }
 
-//    @PutMapping("")
+    @PutMapping("/users")
+    public User putUsers(@RequestBody User user) {
+        for (int i = 0; 0 < (users.size() - 1); i++) {
+            if (users.get(i).equals(user)) {
+                users.set(i, user);
+                return user;
+            }
+        }
+        users.add(user);
+        return user;
+    }
 }
