@@ -1,9 +1,6 @@
 package ru.yandex.practicum.catsgram.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.yandex.practicum.catsgram.exception.InvalidEmailException;
 import ru.yandex.practicum.catsgram.exception.UserAlreadyExistsException;
 import ru.yandex.practicum.catsgram.model.User;
@@ -19,9 +16,9 @@ public class UserController {
     public List<User> getUsers() {
         return users;
     }
-    @PostMapping("users")
+    @PostMapping("/users")
     public User create(@RequestBody User user) throws Exception {
-        if (user.getEmail().equals(null)) {
+        if (user.getEmail().equals("")) {
             throw new InvalidEmailException("email can't be empty");
         }
         for (User user1 : users) {
@@ -32,4 +29,6 @@ public class UserController {
         users.add(user);
         return user;
     }
+
+//    @PutMapping("")
 }

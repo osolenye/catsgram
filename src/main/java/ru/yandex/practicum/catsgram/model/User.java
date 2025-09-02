@@ -48,4 +48,10 @@ public class User {
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
+
+    public User(String email, String nickname, LocalDate birthdate) {
+        this.email = email;
+        this.nickname = nickname;
+        this.birthdate = birthdate;
+    }
 }
