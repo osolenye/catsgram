@@ -1,0 +1,7 @@
+package ru.yandex.practicum.catsgram.exception;
+
+public class UserAlreadyExistsException extends Exception {
+    public UserAlreadyExistsException(String message) {
+        super(message);
+    }
+}
