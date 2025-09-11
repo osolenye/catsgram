@@ -1,27 +1,33 @@
 package ru.yandex.practicum.catsgram.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.yandex.practicum.catsgram.model.Post;
+import ru.yandex.practicum.catsgram.service.PostService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 public class PostController {
-    private List<Post> posts = new ArrayList<Post>();
+    private final PostService postService;
+
+    // tells Spring IoC that this is a Dependency Injection
+    @Autowired
+    public PostController(PostService postService) {
+        this.postService = postService;
+    }
 
     @GetMapping("/posts")
     public List<Post> findAll() {
-        return posts;
+        return postService.findall();
     }
 
-    @PostMapping(value = "post")
-    // RequestBody - it gets the argument from the request body and automatically converts it to Java object
+    @PostMapping("/posts")
     public Post create(@RequestBody Post post) {
-        posts.add(post);
-        return post;
+        return postService.create(post);
     }
 }

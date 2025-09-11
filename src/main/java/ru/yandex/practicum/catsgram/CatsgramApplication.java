@@ -23,7 +23,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 // PUT, PATCH, DELETE AND POST are not safe methods cuz they can change the resource
 // idempotent methods are the ones that don't change anything if called many times
 
-
+// apps code should be divided into 3 pieces: logic(business logic), data storage and API handling
 @SpringBootApplication
 public class CatsgramApplication {
     public static void main(String[] args) {
